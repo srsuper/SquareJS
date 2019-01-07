@@ -1,12 +1,11 @@
 /*
 
-| [ LINE TalkBot - by GoogleX ]
+| [ LINE SquareBOT JS by WyvernStudio]
 | 
 | Special thanks to:
-|  - StackoverFlow
-|  - Bootstrap snippets
+|  - GoogleX https://github.com/GoogleX133/LINE-FreshBot
 |
-| Copyright (c) 2018
+| Copyright (c) 2019
 
 
 */
@@ -20,11 +19,11 @@ console.info("\n\
 ------------ --------  ----   ----- ------------ \n\
 ************ ********  ****    **** ************ \n\
                                                  ");
-console.info("\nNOTE : This project is made by @GoogleX !\n\
+console.info("\nNOTE : This project is made by @WyvernStudio !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 1; // 0 = CREDENTIAL, 1 = QRCODE, 2 = AuthToken #CHANGE YOUR LOGIN TYPE HERE
+var LOGINType = 1; // 0 = ยืนยันตัวตน, 1 = ลิงค์ QR, 2 = ยืนยันด้วยโทเคน #เปลี่ยนประเภทการเข้าสู่ระบบตรงนี้
 
 /* Const variable */
 
@@ -63,8 +62,10 @@ var options = {
 var botlib = new BotLib('', config);
 
 /* Update Check */
-console.log('\nChecking update....')
+console.log('\nตรวจสอบการอัพเดท....')
 botlib.checkUpdate();
+
+console.log('\nโปรดออกจากห้องแชทก่อน ไม่งั้นระบบอาจจะหา MID ไม่เจอ')
 
 /* Function */
 
@@ -75,7 +76,7 @@ function setTHttpClient(xoptions = {
     path: config.LINE_HTTP_URL,
     https: true
 }, callback, xcustom = "none", tpath) {
-    xoptions.headers['X-Line-Application'] = 'DESKTOPWIN\t7.18.1\tFDLRCN\t11.2.5';
+    xoptions.headers['X-Line-Application'] = 'DESKTOPWIN\t7.18.1\tYukiOS\t11.2.5';
     connection =
         thrift.createHttpConnection(config.LINE_DOMAIN_3RD, 443, xoptions);
     connection.on('error', (err) => {
@@ -127,7 +128,7 @@ function getQrLink(callback) {
 	options.path = config.LINE_HTTP_URL;
     setTHttpClient(options,(xres) => {
 		if(xres == "DONE"){
-   			 Tclient.getAuthQrcode(true, "SQBOT",(err, result) => {
+   			 Tclient.getAuthQrcode(true, "YukiOS",(err, result) => {
     		  // console.log('here')
 			  //console.log(err)
      		 const qrcodeUrl = `line://au/q/${result.verifier}`;
@@ -148,7 +149,7 @@ function qrLogin(xverifier,callback){
 			if(xret == "DONE"){
 			reqx.type = 1;
 			reqx.verifier = verifiedQr;
-			reqx.systemName = "SQBOT";
+			reqx.systemName = "YukiOS";
 			reqx.identityProvider = 1;
 			reqx.e2eeVersion = 0;
 			TauthService.loginZ(reqx,(err,success) => {
@@ -180,7 +181,7 @@ function credLogin(id,password,callback){
 		  reqx.password = rsaCrypto.credentials;
 		  reqx.keepLoggedIn = true;
 		  reqx.accessLocation = config.ip;
-		  reqx.systemName = 'SquareBot';
+		  reqx.systemName = 'YukiOS';
 		  reqx.e2eeVersion = 0;
 			  try{
 			      TauthService.loginZ(reqx,(err,success) => {
@@ -193,7 +194,7 @@ function credLogin(id,password,callback){
                       setTHttpClient(options);
 				      authConn(()=>{
 						  let pinCode = success.pinCode;
-                	      console.info("\n\n=============================\nEnter This Pincode => "+success.pinCode+"\nto your mobile phone in 2 minutes\n=============================");
+                	      console.info("\n\n=============================\nยืนยันรหัสนี้ => "+success.pinCode+"\nบนมือถือของคุณภายใน 2 นาที\n=============================");
                 	      botlib.checkLoginResultType(success.type, success);
 						  reqx = new TTypes.LoginRequest();
 						  reqx.type = 1;
@@ -208,7 +209,7 @@ function credLogin(id,password,callback){
 						       options.path = config.LINE_POLL_URL;
                                setTHttpClient(options);
 							   config.tokenn = success.authToken;
-							   console.info('> AuthToken: '+success.authToken);
+							   console.info('> โทเคน: '+success.authToken);
                		           botlib.checkLoginResultType(success.type, success);
                		           callback(success);
 	                         })
@@ -225,17 +226,17 @@ function credLogin(id,password,callback){
 
 function lineLogin(type = 1, callback) {
     /*
-    Login Type
-    0 = CREDENTIAL
-    1 = QR
-    2 = Token
+    ประเภทการเข้าสู่ระบบ
+    0 = ยืนยันตัวตน
+    1 = ลิงค์ QR
+    2 = โทเคน
     */
 
-    //INSERT YOUR CREDENTIAL HERE (IF YOU ARE USING type=0)
+    //ใส่ข้อมูลการยืนยันตรงนี้ (หากคุณกำลังใช้ type=0)
     let email = '';
     let password = '';
 
-    //INSERT YOUR AUTHTOKEN HERE(IF YOU ARE USING type=2)
+    //ใส่โทเคนตรงนี้ (หากคุณกำลังใช้ type=2)
     let authToken = '';
 
     switch (type) {
@@ -246,14 +247,14 @@ function lineLogin(type = 1, callback) {
             break;
         case 1:
             getQrLink((qrcodeUrl, verifier) => {
-                console.info('> Please login to your LINE account');
-                console.info('> Your qrLink: ' + qrcodeUrl);
+                console.info('> กรุณาเข้าสู่ระบบผ่านไลน์');
+                console.info('> ลิงค์ qr: ' + qrcodeUrl);
                 qrcode.generate(qrcodeUrl, {
                     small: true
                 });
                 qrLogin(verifier, (res) => {
-                    console.info('> AuthToken: ' + res.authToken);
-                    console.info('> Login Success');
+                    console.info('> โทเคน: ' + res.authToken);
+                    console.info('> ล็อคอินเรียบร้อย');
                     options.path = config.LINE_POLL_URL;
                     setTHttpClient(options);
                     callback(res);
@@ -277,7 +278,7 @@ function lineLogin(type = 1, callback) {
 
 //
 function getSqChatList(ddata) {
-    let hasiltxt = '#Your SquareChat List\n',
+    let hasiltxt = '#รายการแชทของคุณ\n',
         numb, rex = [];
     for (var ii = 0; ii < ddata.squares.length; ii++) {
         let namex = ddata.squares[ii].name;
@@ -293,12 +294,13 @@ function getSqChatList(ddata) {
                 hasiltxt += 'SquareMid: ' + success.squareChats[ix].squareMid + '\n';
                 hasiltxt += 'SquareName: ' + namex + '\n\n';
                 console.info(namex)
+                console.info('\n โปรดรอการบันทึกข้อมูลสักครู่')
             }
         },midx)
     }
     setTimeout(() => {
         fs.writeFileSync(__dirname + '/../data/squarechatlist.txt', hasiltxt, 'utf-8')
-        console.info('Done!, saved to ./data/squarechatlist.txt')
+        console.info('เรียบร้อยแล้ว!, บันทึกไปยัง ./data/squarechatlist.txt')
     }, 50000)
 }
 
@@ -306,14 +308,14 @@ function getSqChatList(ddata) {
 
 lineLogin(LOGINType, (res) => {
     if (res == 'FAIL') {
-        console.info('> Login type invalid');
+        console.info('> ประเภทการเข้าสู่ระบบไม่ถูกต้อง');
         return;
     }
     options.headers['X-Line-Access'] = res.authToken;
     serviceConn('/SQS1', 'square', 'SquareService', (res) => {
 		botlib = new BotLib(Tcustom.square, config);
-        console.info('> Success connected to talk service');
-        let hasiltxt = '#Your Square List\n',
+        console.info('> เข้าสู่ระบบสแควร์เรียบร้อย');
+        let hasiltxt = '#รายการสแควร์ของคุณ\n',
             numb;
         botlib.getJoinedSquares((err, success) => {
             if (err) throw err;
@@ -326,12 +328,12 @@ lineLogin(LOGINType, (res) => {
                 hasiltxt += 'OpenChatRoom: ' + success.statuses[success.squares[i].mid].openChatCount + '\n\n';
             }
             fs.writeFileSync(__dirname + '/../data/squarelist.txt', hasiltxt, 'utf-8')
-            console.info('Please wait.....')
+            console.info('โปรดรอการบันทึกข้อมูลสักครู่.....')
         })
     })
 });
 
 process.on('uncaughtException', function(err) {
-    console.info("Something make me cry \n" + err);
+    console.info("เหมือนจะมีบางสิ่งผิดพลาด \n" + err);
 
 });
