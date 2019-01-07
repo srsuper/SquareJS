@@ -48,14 +48,14 @@ const config = {
     X_LINE_APP: 'DESKTOPWIN\t7.18.1\tFDLRCN\t11.2.5',
     ip: '127.0.0.1',
     version: '1.0',
-    repo: 'https://github.com/GoogleX133/LINE-FreshBot',
-    raw_repo: 'https://raw.githubusercontent.com/GoogleX133/LINE-FreshBot/master/',
+    repo: 'https://github.com/wyvernstudio/SquareJS',
+    raw_repo: 'https://raw.githubusercontent.com/wyvernstudio/SquareJS/master/',
     revision: 0,
     hostname: hostname(),
     platform: whichPlatform,
     EMAIL_REGEX: /[^@]+@[^@]+\.[^@]+/,
     Headers: {
-        'X-Line-Application': 'DESKTOPWIN\t7.18.1\tFDLRCN\t11.2.5',
+        'X-Line-Application': 'DESKTOPWIN\t7.18.1\tYukiOS\t11.2.5',
         'User-Agent': 'Android Mobile Line/7.18.1',
         'Connection': 'keep-alive'
     },

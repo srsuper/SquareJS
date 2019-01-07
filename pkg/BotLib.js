@@ -133,9 +133,9 @@ class BotLib {
     checkUpdate() {
         unirest.get(this.config.raw_repo + 'version.txt').end((data) => {
             if (this.config.version != parseFloat(data.body)) {
-                console.info('There are new version of LINE SquareBot \n-> ' + this.config.repo + ' (' + parseFloat(data.body) + ')')
+                console.info('มีเวอร์ชั่นใหม่แล้ว โปรดอัพเดทก่อนใช้งาน\n-> ' + this.config.repo + ' (' + parseFloat(data.body) + ')')
             } else {
-                console.info('You are currently using the latest version ! ^_^')
+                console.info('ขณะนี้เป็นเวอร์ชั่นล่าสุดแล้ว! ^_^')
             }
         })
     }
@@ -196,11 +196,11 @@ class BotLib {
         let certificate, authToken;
         this.config.Headers['X-Line-Access'] = result.authToken || result.verifier;
         if (result.type === TTypes.LoginResultType.SUCCESS) {
-            console.log('> Login success');
+            console.log('> เข้าสู่ระบบแล้ว');
         } else if (result.type === TTypes.LoginResultType.REQUIRE_QRCODE) {
-            console.log('> require QR code');
+            console.log('> ต้องการใช้งาน qr ลิงค์');
         } else if (result.type === TTypes.LoginResultType.REQUIRE_DEVICE_CONFIRM) {
-            console.log('> require device confirm');
+            console.log('> ต้องยันยันอุปกรณ์');
         } else {
             throw new Error('unkown type');
         }
