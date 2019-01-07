@@ -1,21 +1,23 @@
 {
-  "name": "fresh-bot",
+  "name": "square-js",
   "version": "1.0.0",
-  "description": "LINE Fresh Bot",
+  "description": "LINE Square JS-Bot",
   "main": "./examples/talk.js",
   "scripts": {
     "start": "node ./examples/talk.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GoogleX133/LINE-FreshBot.git"
+    "url": "https://github.com/wyvernstudio/SquareJS.git"
   },
   "keywords": [
     "line-bot",
     "square-bot",
-    "line-bot"
+    "line-bot",
+    "selfbot",
+    "js-line-bot"
   ],
-  "author": "GoogleX",
+  "author": "wyvernstudio",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.1",
