@@ -33,7 +33,7 @@ Type `help` to see the keyword
 - More async function lib
 
 <br><br>
-If you have an idea for new feature, you can contact [me](https://line.me/ti/p/~@lmu8345a_).
+If you have an idea for new feature, you can contact [me](https://line.me/ti/p/~@lmu8345a).
 
 ## Requirement
 
