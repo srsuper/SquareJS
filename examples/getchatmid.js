@@ -23,7 +23,7 @@ console.info("\nNOTE : This project is made by @WyvernStudio !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 1; // 0 = �׹�ѹ��ǵ�, 1 = �ԧ�� QR, 2 = �׹�ѹ�����ह #����¹����������������к��ç���
+var LOGINType = 0; // 0 = Â×¹ÂÑ¹µÑÇµ¹, 1 = ÅÔ§¤ì QR, 2 = Â×¹ÂÑ¹´éÇÂâ·à¤¹ #à»ÅÕèÂ¹»ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººµÃ§¹Õé
 
 /* Const variable */
 
@@ -62,10 +62,10 @@ var options = {
 var botlib = new BotLib('', config);
 
 /* Update Check */
-console.log('\n��Ǩ�ͺ����Ѿഷ....')
+console.log('\nµÃÇ¨ÊÍº¡ÒÃÍÑ¾à´·....')
 botlib.checkUpdate();
 
-console.log('\n�ô�͡�ҡ��᪷ͧ��͹ ������к��Ҩ���� MID �����')
+console.log('\nâ»Ã´ÍÍ¡¨Ò¡ËéÍ§áª·¡èÍ¹ äÁè§Ñé¹ÃÐººÍÒ¨¨ÐËÒ MID äÁèà¨Í')
 
 /* Function */
 
@@ -194,7 +194,7 @@ function credLogin(id,password,callback){
                       setTHttpClient(options);
 				      authConn(()=>{
 						  let pinCode = success.pinCode;
-                	      console.info("\n\n=============================\n�׹�ѹ���ʹ�� => "+success.pinCode+"\n����Ͷ�ͧ͢�س���� 2 �ҷ�\n=============================");
+                	      console.info("\n\n=============================\nÂ×¹ÂÑ¹ÃËÑÊ¹Õé => "+success.pinCode+"\nº¹Á×Í¶×Í¢Í§¤Ø³ÀÒÂã¹ 2 ¹Ò·Õ\n=============================");
                 	      botlib.checkLoginResultType(success.type, success);
 						  reqx = new TTypes.LoginRequest();
 						  reqx.type = 1;
@@ -209,7 +209,7 @@ function credLogin(id,password,callback){
 						       options.path = config.LINE_POLL_URL;
                                setTHttpClient(options);
 							   config.tokenn = success.authToken;
-							   console.info('> �ह: '+success.authToken);
+							   console.info('> â·à¤¹: '+success.authToken);
                		           botlib.checkLoginResultType(success.type, success);
                		           callback(success);
 	                         })
@@ -226,17 +226,17 @@ function credLogin(id,password,callback){
 
 function lineLogin(type = 1, callback) {
     /*
-    ����������������к�
-    0 = �׹�ѹ��ǵ�
-    1 = �ԧ�� QR
-    2 = �ह
+    »ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐºº
+    0 = Â×¹ÂÑ¹µÑÇµ¹
+    1 = ÅÔ§¤ì QR
+    2 = â·à¤¹
     */
 
-    //�������š���׹�ѹ�ç��� (�ҡ�س���ѧ�� type=0)
-    let email = '';
-    let password = '';
+    //ãÊè¢éÍÁÙÅ¡ÒÃÂ×¹ÂÑ¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=0)
+    let email = 'panutchakorn_2533@hotmail.com';
+    let password = 'Takumi2533';
 
-    //����ह�ç��� (�ҡ�س���ѧ�� type=2)
+    //ãÊèâ·à¤¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=2)
     let authToken = '';
 
     switch (type) {
@@ -247,14 +247,14 @@ function lineLogin(type = 1, callback) {
             break;
         case 1:
             getQrLink((qrcodeUrl, verifier) => {
-                console.info('> ��س��������к���ҹ�Ź�');
-                console.info('> �ԧ�� qr: ' + qrcodeUrl);
+                console.info('> ¡ÃØ³Òà¢éÒÊÙèÃÐºº¼èÒ¹äÅ¹ì');
+                console.info('> ÅÔ§¤ì qr: ' + qrcodeUrl);
                 qrcode.generate(qrcodeUrl, {
                     small: true
                 });
                 qrLogin(verifier, (res) => {
-                    console.info('> �ह: ' + res.authToken);
-                    console.info('> ��ͤ�Թ���º����');
+                    console.info('> â·à¤¹: ' + res.authToken);
+                    console.info('> ÅçÍ¤ÍÔ¹àÃÕÂºÃéÍÂ');
                     options.path = config.LINE_POLL_URL;
                     setTHttpClient(options);
                     callback(res);
@@ -278,7 +278,7 @@ function lineLogin(type = 1, callback) {
 
 //
 function getSqChatList(ddata) {
-    let hasiltxt = '#��¡��᪷�ͧ�س\n',
+    let hasiltxt = '#ÃÒÂ¡ÒÃáª·¢Í§¤Ø³\n',
         numb, rex = [];
     for (var ii = 0; ii < ddata.squares.length; ii++) {
         let namex = ddata.squares[ii].name;
@@ -294,13 +294,13 @@ function getSqChatList(ddata) {
                 hasiltxt += 'SquareMid: ' + success.squareChats[ix].squareMid + '\n';
                 hasiltxt += 'SquareName: ' + namex + '\n\n';
                 console.info(namex)
-                console.info('\n �ô�͡�úѹ�֡�������ѡ����')
+                console.info('\n â»Ã´ÃÍ¡ÒÃºÑ¹·Ö¡¢éÍÁÙÅÊÑ¡¤ÃÙè')
             }
         },midx)
     }
     setTimeout(() => {
         fs.writeFileSync(__dirname + '/../data/squarechatlist.txt', hasiltxt, 'utf-8')
-        console.info('���º��������!, �ѹ�֡��ѧ ./data/squarechatlist.txt')
+        console.info('àÃÕÂºÃéÍÂáÅéÇ!, ºÑ¹·Ö¡ä»ÂÑ§ ./data/squarechatlist.txt')
     }, 50000)
 }
 
@@ -308,14 +308,14 @@ function getSqChatList(ddata) {
 
 lineLogin(LOGINType, (res) => {
     if (res == 'FAIL') {
-        console.info('> ����������������к����١��ͧ');
+        console.info('> »ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººäÁè¶Ù¡µéÍ§');
         return;
     }
     options.headers['X-Line-Access'] = res.authToken;
     serviceConn('/SQS1', 'square', 'SquareService', (res) => {
 		botlib = new BotLib(Tcustom.square, config);
-        console.info('> �������к���������º����');
-        let hasiltxt = '#��¡�������ͧ�س\n',
+        console.info('> à¢éÒÊÙèÃÐººÊá¤ÇÃìàÃÕÂºÃéÍÂ');
+        let hasiltxt = '#ÃÒÂ¡ÒÃÊá¤ÇÃì¢Í§¤Ø³\n',
             numb;
         botlib.getJoinedSquares((err, success) => {
             if (err) throw err;
@@ -328,12 +328,12 @@ lineLogin(LOGINType, (res) => {
                 hasiltxt += 'OpenChatRoom: ' + success.statuses[success.squares[i].mid].openChatCount + '\n\n';
             }
             fs.writeFileSync(__dirname + '/../data/squarelist.txt', hasiltxt, 'utf-8')
-            console.info('�ô�͡�úѹ�֡�������ѡ����.....')
+            console.info('â»Ã´ÃÍ¡ÒÃºÑ¹·Ö¡¢éÍÁÙÅÊÑ¡¤ÃÙè.....')
         })
     })
 });
 
 process.on('uncaughtException', function(err) {
-    console.info("����͹���պҧ��觼Դ��Ҵ \n" + err);
+    console.info("àËÁ×Í¹¨ÐÁÕºÒ§ÊÔè§¼Ô´¾ÅÒ´ \n" + err);
 
 });
