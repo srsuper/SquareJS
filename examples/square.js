@@ -23,7 +23,7 @@ console.info("\nNOTE : This project is made by @WyvernStudio !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 0; // 0 = Â×¹ÂÑ¹µÑÇµ¹, 1 = ÅÔ§¤ì QR, 2 = Â×¹ÂÑ¹´éÇÂâ·à¤¹ #à»ÅÕèÂ¹»ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººµÃ§¹Õé
+var LOGINType = 2; // 0 = Â×¹ÂÑ¹µÑÇµ¹, 1 = ÅÔ§¤ì QR, 2 = Â×¹ÂÑ¹´éÇÂâ·à¤¹ #à»ÅÕèÂ¹»ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººµÃ§¹Õé
 
 /* Const variable */
 
@@ -235,11 +235,11 @@ function lineLogin(type = 1, callback) {
     */
 
     //ãÊè¢éÍÁÙÅ¡ÒÃÂ×¹ÂÑ¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=0)
-    let email = 'panutchakorn_2533@hotmail.com';
-    let password = 'Takumi2533';
+    let email = '';
+    let password = '';
 
     //ãÊèâ·à¤¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=2)
-    let authToken = '';
+    let authToken = 'o8fD6THE8hJzaW+h7Z1URohpxg435jJNAeNsiQwTxDSsnYcvsMcpA/xQdtlOEI22IYBB8C2fJSZLCBHGRpCvpmwSR7yvuOv4EnRt0ZdtmZbAppycCjHi8QrS56S51QRw8N2GZVnC3BSSglPwCxwHhwdB04t89/1O/w1cDnyilFU=';
 
     switch (type) {
         case 0:
