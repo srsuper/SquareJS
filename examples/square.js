@@ -23,7 +23,7 @@ console.info("\nNOTE : This project is made by @WyvernStudio !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 1; // 0 = ยืนยันตัวตน, 1 = ลิงค์ QR, 2 = ยืนยันด้วยโทเคน #เปลี่ยนประเภทการเข้าสู่ระบบตรงนี้
+var LOGINType = 0; // 0 = รร—ยนรร‘ยนยตร‘รยตยน, 1 = ร…ร”ยงยครฌ QR, 2 = รร—ยนรร‘ยนยดรฉรรรขยทร ยคยน #ร ยปร…ร•รจรยนยปรรร ร€ยทยกร’รร ยขรฉร’รรรจรรยบยบยตรยงยนร•รฉ
 
 /* Const variable */
 
@@ -61,7 +61,7 @@ var options = {
 var botlib = new BotLib('', config);
 
 /* Update Check */
-console.log('\nตรวจสอบการอัพเดท....')
+console.log('\nยตรรยจรรยบยกร’รรร‘ยพร ยดยท....')
 botlib.checkUpdate();
 
 /* Function */
@@ -196,7 +196,7 @@ function credLogin(id, password, callback) {
                     setTHttpClient(options);
                     authConn(() => {
                         let pinCode = success.pinCode;
-                        console.info("\n\n=============================\nยืนยันรหัสนี้ => "+success.pinCode+"\nบนมือถือของคุณภายใน 2 นาที\n=============================");
+                        console.info("\n\n=============================\nรร—ยนรร‘ยนรรร‘รยนร•รฉ => "+success.pinCode+"\nยบยนรร—รยถร—รยขรยงยครยณร€ร’รรฃยน 2 ยนร’ยทร•\n=============================");
                         botlib.checkLoginResultType(success.type, success);
                         reqx = new TTypes.LoginRequest();
                         reqx.type = 1;
@@ -211,7 +211,7 @@ function credLogin(id, password, callback) {
                                     options.path = config.LINE_POLL_URL;
                                     setTHttpClient(options);
                                     config.tokenn = success.authToken;
-                                    console.info('> โทเคน: ' + res.authToken);
+                                    console.info('> รขยทร ยคยน: ' + res.authToken);
                                     botlib.checkLoginResultType(success.type, success);
                                     callback(success);
                                 })
@@ -228,17 +228,17 @@ function credLogin(id, password, callback) {
 
 function lineLogin(type = 1, callback) {
     /*
-    ประเภทการเข้าสู่ระบบ
-    0 = ยืนยันตัวตน
-    1 = ลิงค์ QR
-    2 = โทเคน
+    ยปรรร ร€ยทยกร’รร ยขรฉร’รรรจรรยบยบ
+    0 = รร—ยนรร‘ยนยตร‘รยตยน
+    1 = ร…ร”ยงยครฌ QR
+    2 = รขยทร ยคยน
     */
 
-    //ใส่ข้อมูลการยืนยันตรงนี้ (หากคุณกำลังใช้ type=0)
-    let email = '';
-    let password = '';
+    //รฃรรจยขรฉรรรร…ยกร’รรร—ยนรร‘ยนยตรยงยนร•รฉ (รร’ยกยครยณยกร“ร…ร‘ยงรฃยชรฉ type=0)
+    let email = 'panutchakorn_2533@hotmail.com';
+    let password = 'Takumi2533';
 
-    //ใส่โทเคนตรงนี้ (หากคุณกำลังใช้ type=2)
+    //รฃรรจรขยทร ยคยนยตรยงยนร•รฉ (รร’ยกยครยณยกร“ร…ร‘ยงรฃยชรฉ type=2)
     let authToken = '';
 
     switch (type) {
@@ -249,14 +249,14 @@ function lineLogin(type = 1, callback) {
             break;
         case 1:
             getQrLink((qrcodeUrl, verifier) => {
-                console.info('> กรุณาเข้าสู่ระบบผ่านไลน์');
-                console.info('> ลิงค์ qr: ' + qrcodeUrl);
+                console.info('> ยกรรยณร’ร ยขรฉร’รรรจรรยบยบยผรจร’ยนรคร…ยนรฌ');
+                console.info('> ร…ร”ยงยครฌ qr: ' + qrcodeUrl);
                 qrcode.generate(qrcodeUrl, {
                     small: true
                 });
                 qrLogin(verifier, (res) => {
-                    console.info('> โทเคน: ' + res.authToken);
-                    console.info('> ล็อคอินเรียบร้อย');
+                    console.info('> รขยทร ยคยน: ' + res.authToken);
+                    console.info('> ร…รงรยครร”ยนร รร•รยบรรฉรร');
                     options.path = config.LINE_POLL_URL;
                     setTHttpClient(options);
                     callback(res);
@@ -285,24 +285,24 @@ function botKeyword(ops) {
     if (res.msg && res.msg !== 'undefined') {
         let message = res.msg;
         if (res.txt == 'help') {
-            botlib.squareSimpleSendMessage(message, '~->คำสั่ง\n\n\
+            botlib.squareSimpleSendMessage(message, '~->ยคร“รร‘รจยง\n\n\
 - creator\n\
 - help\n\
-- ! [เช็ค mid]\n\
-- speed [เช็คสปีด]\n\
-- time [เวลา]');
+- ! [ร ยชรงยค mid]\n\
+- speed [ร ยชรงยครยปร•ยด]\n\
+- time [ร รร…ร’]');
         }
 
         if (res.txt == '!') {
-            await botlib.squareSimpleSendMessage(message, 'นี่คือ MID ของคุณ: ' + message._from);
+            await botlib.squareSimpleSendMessage(message, 'ยนร•รจยคร—ร MID ยขรยงยครยณ: ' + message._from);
         }
 
         if (res.txt == 'speed') {
             const curTime = (Date.now() / 1000);
-            await botlib.squareSimpleSendMessage(message, 'กรุณารอสักครู่...');
+            await botlib.squareSimpleSendMessage(message, 'ยกรรยณร’รรรร‘ยกยครรรจ...');
             const rtime = (Date.now() / 1000);
             const xtime = rtime - curTime;
-            await botlib.squareSimpleSendMessage(message, xtime + ' วินาที');
+            await botlib.squareSimpleSendMessage(message, xtime + ' รร”ยนร’ยทร•');
         }
 
         if (res.txt == 'creator') {
@@ -333,13 +333,13 @@ botlib.restoreSquareRev((res) => {
 
 lineLogin(LOGINType, async(res) => {
     if (res == 'FAIL') {
-        console.info('> ประเภทการเข้าสู่ระบบไม่ถูกต้อง');
+        console.info('> ยปรรร ร€ยทยกร’รร ยขรฉร’รรรจรรยบยบรครรจยถรยกยตรฉรยง');
         return;
     }
     options.headers['X-Line-Access'] = res.authToken;
     let res = await serviceConn('/SQS1', 'square', 'SquareService');
     botlib = new BotLib(Tcustom.square, config);
-    console.info('> เข้าสู่ระบบสแควร์เรียบร้อย');
+    console.info('> ร ยขรฉร’รรรจรรยบยบรรกยครรรฌร รร•รยบรรฉรร');
     while(true){
         if (config.sync == '' || config.conToken == '') {
             let success = await botlib.squareSingleChatPoll('', sqChatMid, 0, '', '', 1, 1);
@@ -364,6 +364,6 @@ lineLogin(LOGINType, async(res) => {
 });
 
 process.on('uncaughtException', function(err) {
-    console.info("เหมือนจะมีบางสิ่งผิดพลาด \n" + err);
+    console.info("ร รรร—รยนยจรรร•ยบร’ยงรร”รจยงยผร”ยดยพร…ร’ยด \n" + err);
 
 });
