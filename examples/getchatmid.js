@@ -234,8 +234,8 @@ function lineLogin(type = 1, callback) {
     */
 
     //ãÊè¢éÍÁÙÅ¡ÒÃÂ×¹ÂÑ¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=0)
-    let email = 'panutchakorn_2533@hotmail.com';
-    let password = 'Takumi2533';
+    let email = 'aot5310@gmail.com​';
+    let password = 'takumi2533';
 
     //ãÊèâ·à¤¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=2)
     let authToken = 'o8fD6THE8hJzaW+h7Z1URohpxg435jJNAeNsiQwTxDSsnYcvsMcpA/xQdtlOEI22IYBB8C2fJSZLCBHGRpCvpmwSR7yvuOv4EnRt0ZdtmZbAppycCjHi8QrS56S51QRw8N2GZVnC3BSSglPwCxwHhwdB04t89/1O/w1cDnyilFU=';
