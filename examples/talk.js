@@ -244,7 +244,7 @@ function lineLogin(type = 1, callback) {
 
     //INSERT YOUR CREDENTIAL HERE (IF YOU ARE USING type=0)
     let email = 'aot5310@gmail.com​';
-    let password = 'takumi2533';
+    let password = 'Takumi2533';
 
     //INSERT YOUR AUTHTOKEN HERE(IF YOU ARE USING type=2)
     let authToken = '';
