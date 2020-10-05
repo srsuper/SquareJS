@@ -2,9 +2,9 @@
   "name": "square-js",
   "version": "1.0.0",
   "description": "LINE Square JS-Bot",
-  "main": "./examples/square.js",
+  "main": "./examples/talk.js",
   "scripts": {
-    "start": "node ./examples/square.js"
+    "start": "node ./examples/talk.js"
   },
   "repository": {
     "type": "git",
