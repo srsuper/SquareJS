@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ -*- coding: utf-8 -*-
 /*
 
 | [ LINE SquareBot - by GoogleX ]
@@ -247,7 +247,7 @@ function lineLogin(type = 1, callback) {
     let password = 'takumi2533';
 
     //INSERT YOUR AUTHTOKEN HERE(IF YOU ARE USING type=2)
-    let authToken = 'o8fD6THE8hJzaW+h7Z1URohpxg435jJNAeNsiQwTxDSsnYcvsMcpA/xQdtlOEI22IYBB8C2fJSZLCBHGRpCvpmwSR7yvuOv4EnRt0ZdtmZbAppycCjHi8QrS56S51QRw8N2GZVnC3BSSglPwCxwHhwdB04t89/1O/w1cDnyilFU=';
+    let authToken = '';
 
     switch (type) {
         case 0:
