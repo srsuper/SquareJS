@@ -237,7 +237,7 @@ function lineLogin(type = 1, callback) {
 
     //ãÊè¢éÍÁÙÅ¡ÒÃÂ×¹ÂÑ¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=0)
     let email = 'aot5310@gmail.com​';
-    let password = 'takumi2533';
+    let password = 'Takumi2533';
 
     //ãÊèâ·à¤¹µÃ§¹Õé (ËÒ¡¤Ø³¡ÓÅÑ§ãªé type=2)
     let authToken = '';
