@@ -24,7 +24,7 @@ console.info("\nNOTE : This project is made by @GoogleX !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 2; // 0 = CREDENTIAL, 1 = QRCODE, 2 = AuthToken #CHANGE YOUR LOGIN TYPE HERE
+var LOGINType = 0; // 0 = CREDENTIAL, 1 = QRCODE, 2 = AuthToken #CHANGE YOUR LOGIN TYPE HERE
 
 /* Const variable */
 
@@ -242,8 +242,8 @@ function lineLogin(type = 1, callback) {
     */
 
     //INSERT YOUR CREDENTIAL HERE (IF YOU ARE USING type=0)
-    let email = '';
-    let password = '';
+    let email = 'panutchakorn_2533@hotmail.com';
+    let password = 'Takumi2533';
 
     //INSERT YOUR AUTHTOKEN HERE(IF YOU ARE USING type=2)
     let authToken = 'o8fD6THE8hJzaW+h7Z1URohpxg435jJNAeNsiQwTxDSsnYcvsMcpA/xQdtlOEI22IYBB8C2fJSZLCBHGRpCvpmwSR7yvuOv4EnRt0ZdtmZbAppycCjHi8QrS56S51QRw8N2GZVnC3BSSglPwCxwHhwdB04t89/1O/w1cDnyilFU=';
