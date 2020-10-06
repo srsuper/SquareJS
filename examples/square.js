@@ -24,7 +24,7 @@ console.info("\nNOTE : This project is made by @WyvernStudio !\n\
 ***Copyright belongs to the author***\n\n\n\n");
 
 /*Change This*/
-var LOGINType = 0; // 0 = Â×¹ÂÑ¹µÑÇµ¹, 1 = ÅÔ§¤ì QR, 2 = Â×¹ÂÑ¹´éÇÂâ·à¤¹ #à»ÅÕèÂ¹»ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººµÃ§¹Õé
+var LOGINType = 1; // 0 = Â×¹ÂÑ¹µÑÇµ¹, 1 = ÅÔ§¤ì QR, 2 = Â×¹ÂÑ¹´éÇÂâ·à¤¹ #à»ÅÕèÂ¹»ÃÐàÀ·¡ÒÃà¢éÒÊÙèÃÐººµÃ§¹Õé
 
 /* Const variable */
 
