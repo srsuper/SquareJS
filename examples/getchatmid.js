@@ -1,5 +1,5 @@
 
-/*
+const utf8 = require('utf8');
 
 | [ LINE SquareBOT JS by WyvernStudio]
 | 
